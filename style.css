@@ -1,0 +1,47 @@
+/*elements selectors section*/
+html, body {
+    height: 100%;
+}
+body {
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+/*id selectors section*/
+#calculator-container {
+    background-color: black;
+    margin-top: 1rem;
+    width: 35%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+#calc-display {
+    width: auto;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    margin: .3rem;
+}
+
+#calc-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin: .3rem;
+}
+
+.btn {
+    height: 75%;
+    flex-basis: 25%;
+}
+
+.equal {
+    flex: 2;
+}
