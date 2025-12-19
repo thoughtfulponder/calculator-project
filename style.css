@@ -1,7 +1,9 @@
 /*elements selectors section*/
-html, body {
+html,
+body {
     height: 100%;
 }
+
 body {
     background-color: lightblue;
     display: flex;
@@ -14,7 +16,7 @@ body {
 #calculator-container {
     background-color: black;
     margin-top: 1rem;
-    width: 35%;
+    width: 30%;
     height: 95%;
     display: flex;
     flex-direction: column;
@@ -25,10 +27,12 @@ body {
     width: auto;
     background-color: green;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
+    align-items: end;
     height: 30%;
     margin: .3rem;
+    color: white;
+    font-size: 2rem;
 }
 
 #calc-buttons {
@@ -37,8 +41,12 @@ body {
     margin: .3rem;
 }
 
+/*class selectors section*/
+
+
+
 .btn {
-    height: 75%;
+    height: 100%;
     flex-basis: 25%;
 }
 
