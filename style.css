@@ -17,7 +17,7 @@ body {
 #calculator-container {
     background-color: black;
     min-width: 320px;
-    max-width: 40%;
+    max-width: 30%;
     min-height: 554px;
     max-height: 90%;
     display: flex;
@@ -54,8 +54,19 @@ body {
     max-height: 70%;
     flex-basis: 25%;
     box-sizing: border-box;
+    font-size: 1.5rem;
 }
 
 .equal {
     flex: 2;
+}
+
+@media (max-width: 430px) {
+    #calculator-container {
+        max-width: fit-content;
+        border-radius: none;
+    }
+    .btn {
+        font-size: 1rem;
+    }
 }
