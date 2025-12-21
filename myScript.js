@@ -28,10 +28,10 @@ const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
-        if ( operation === "") {
-            number1 = Number(button.textContent);
+        if (operation === "") {
+            number1 = Number(button.value);
         } else {
-            number2 = Number(button.textContent);
+            number2 = Number(button.value);
         }
         if (button.textContent === "X") {
             operation = multiply;
@@ -42,7 +42,7 @@ buttons.forEach(button => {
         } else if (button.textContent === "+") {
             operation = add;
         }
-        
+
         if (button.textContent === "AC" || button.textContent === "clear") {
             displayResult.textContent = "0";
             operation = "";
@@ -51,9 +51,11 @@ buttons.forEach(button => {
         }*/
         if (button.value === "equal") {
             console.log(button.textContent);
-           console.log(operate(number1, number2, operation));
+            let result = operate(number1, number2, operation);
+            console.log(result);
+
         }
         console.log(button.value);
-        
+
     });
 });
