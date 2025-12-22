@@ -1,3 +1,11 @@
+const displayResult = document.querySelector(".display-result");
+
+const buttons = document.querySelectorAll(".btn");
+
+const numButtons = document.querySelectorAll(".num-btn");
+
+const oprButtons = document.querySelectorAll(".opr-btn");
+
 let number1 = "";
 let operation = "";
 let number2 = "";
@@ -22,17 +30,12 @@ function operate(num1, num2, operator) {
     return operator(num1, num2);
 }
 
-const displayResult = document.querySelector(".display-result");
 
-const buttons = document.querySelectorAll(".btn");
 
-buttons.forEach(button => {
+/*buttons.forEach(button => {
     button.addEventListener("click", () => {
-        if (operation === "") {
-            number1 = Number(button.value);
-        } else {
-            number2 = Number(button.value);
-        }
+        number1 = button.value;
+
         if (button.textContent === "X") {
             operation = multiply;
         } else if (button.textContent === "/") {
@@ -42,6 +45,12 @@ buttons.forEach(button => {
         } else if (button.textContent === "+") {
             operation = add;
         }
+        if (operation === multiply ||
+            operation === divide ||
+            operation === subtract ||
+            operation === add) {
+            number2 = button.value;
+        }
 
         if (button.textContent === "AC" || button.textContent === "clear") {
             displayResult.textContent = "0";
@@ -49,13 +58,42 @@ buttons.forEach(button => {
         } /*else {
             displayResult.textContent = `${number1} ${operation} ${number2}`;
         }*/
-        if (button.value === "equal") {
-            console.log(button.textContent);
+/*if (button.value === "equal") {
+    console.log(button.textContent);
+    let result = operate(number1, number2, operation);
+    console.log(result);
+
+}
+console.log(button.value);
+
+});
+});*/
+
+numButtons.forEach(numButton => {
+    numButton.addEventListener("click", e => {
+        if (operation === "") {
+            number1 += Number(e.target.value);
+            console.log(number1);
+
+        } else {
+            number2 += Number(e.target.value);
+            console.log(number2);
+
+        }
+    });
+});
+
+oprButtons.forEach(oprButton => {
+    oprButton.addEventListener("click", e => {
+        if (e.target.innerText !== "=") {
+            operation = e.target.value;
+
+            console.log(operation);
+        } else {
+            console.log(number2);
             let result = operate(number1, number2, operation);
             console.log(result);
 
         }
-        console.log(button.value);
-
     });
 });
