@@ -6,24 +6,25 @@ const numButtons = document.querySelectorAll(".num-btn");
 
 const oprButtons = document.querySelectorAll(".opr-btn");
 
-let number1 = 0;
+let number1 = "";
 let operation = "";
-let number2 = 0;
+let number2 = "";
+let operation2 = "";
 
 function add(num1, nmu2) {
-    return num1 + nmu2;
+    return +(num1) + +(nmu2);
 }
 
 function subtract(num1, num2) {
-    return num1 - num2;
+    return +(num1) - +(num2);
 }
 
 function multiply(num1, num2) {
-    return num1 * num2;
+    return +(num1) * +(num2);
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+    return +(num1) / +(num2);
 }
 
 function operate(num1, num2, operator) {
@@ -72,7 +73,7 @@ console.log(button.value);
 numButtons.forEach(numButton => {
     numButton.addEventListener("click", e => {
         if (operation === "") {
-            number1 += Number(numButton.value);
+            number1 += (numButton.value);
             console.log(number1);
             displayResult.textContent = number1;
 
@@ -87,27 +88,61 @@ numButtons.forEach(numButton => {
 
 oprButtons.forEach(oprButton => {
     oprButton.addEventListener("click", e => {
-        if (e.target.innerText === "X") {
+        if (e.target.innerText === "X" && number2 === "") {
             operation = multiply;
             
-        } else if (e.target.innerText === "/") {
+        } else if (e.target.innerText === "/" && number2 === "") {
             operation = divide;
-        } else if (e.target.innerText === "-") {
+        } else if (e.target.innerText === "-" && number2 === "") {
             operation = subtract;
-        } else if (e.target.innerText === "+") {
+        } else if (e.target.innerText === "+" && number2 === "") {
             operation = add;
         }
         console.log(operation);
         displayResult.textContent += e.target.textContent;
+
+        if (number2 !== "" && e.target.innerText === "X") {
+            operation2 = multiply;
+            operation2.textContent = "X";
+        } else if (number2 !== "" && e.target.innerText === "/") {
+            operation2 = divide;
+            operation2.textContent = "/";
+        } else if (number2 !== "" && e.target.innerText === "-") {
+            operation2 = subtract;
+            operation2.textContent = "-";
+        } else if (number2 !== "" && e.target.innerText === "+") {
+            operation2 = add;
+            operation2.textContent = "+";
+        }
         
-        if (e.target.innerText === "=") {
+        if (e.target.innerText === "=" || 
+            operation2.textContent === "X" || 
+            operation2.textContent === "/" ||
+            operation2.textContent === "-" ||
+            operation2.textContent === "+") {
             console.log(number2);
             let result = operate(number1, number2, operation);
             console.log(result);
-            displayResult.innerHTML = result;
+            displayResult.textContent = result;
             number1 = result;
-            number2 = 0;
+            if (number2 !== "" && oprButton.innerText !== "=" || number2 === "") {
+                displayResult.textContent += operation2.textContent;
+            }
             
+            if (number2 !== "" || oprButton.innerText === "=") {
+                operation2.textContent = "";
+            }
+
+            number2 = "";
+            operation = operation2;
+            
+            
+        }
+        if (e.target.textContent === "AC") {
+            number1 = "";
+            operation = "";
+            operation2 = "";
+            displayResult.textContent = 0;
         }
         });
     });
