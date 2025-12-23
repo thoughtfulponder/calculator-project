@@ -6,9 +6,9 @@ const numButtons = document.querySelectorAll(".num-btn");
 
 const oprButtons = document.querySelectorAll(".opr-btn");
 
-let number1 = "";
+let number1 = 0;
 let operation = "";
-let number2 = "";
+let number2 = 0;
 
 function add(num1, nmu2) {
     return num1 + nmu2;
@@ -72,12 +72,14 @@ console.log(button.value);
 numButtons.forEach(numButton => {
     numButton.addEventListener("click", e => {
         if (operation === "") {
-            number1 += Number(e.target.value);
+            number1 += Number(numButton.value);
             console.log(number1);
+            displayResult.textContent = number1;
 
         } else {
-            number2 += Number(e.target.value);
+            number2 += Number(numButton.value);
             console.log(number2);
+            displayResult.textContent += number2;
 
         }
     });
@@ -87,6 +89,7 @@ oprButtons.forEach(oprButton => {
     oprButton.addEventListener("click", e => {
         if (e.target.innerText === "X") {
             operation = multiply;
+            
         } else if (e.target.innerText === "/") {
             operation = divide;
         } else if (e.target.innerText === "-") {
@@ -95,12 +98,15 @@ oprButtons.forEach(oprButton => {
             operation = add;
         }
         console.log(operation);
+        displayResult.textContent += e.target.textContent;
         
         if (e.target.innerText === "=") {
             console.log(number2);
             let result = operate(number1, number2, operation);
             console.log(result);
-            
+            displayResult.innerHTML = result;
+            number1 = result;
+            number2 = 0;
             
         }
         });
