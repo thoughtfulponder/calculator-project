@@ -85,15 +85,23 @@ numButtons.forEach(numButton => {
 
 oprButtons.forEach(oprButton => {
     oprButton.addEventListener("click", e => {
-        if (e.target.innerText !== "=") {
-            operation = e.target.value;
-
-            console.log(operation);
-        } else {
+        if (e.target.innerText === "X") {
+            operation = multiply;
+        } else if (e.target.innerText === "/") {
+            operation = divide;
+        } else if (e.target.innerText === "-") {
+            operation = subtract;
+        } else if (e.target.innerText === "+") {
+            operation = add;
+        }
+        console.log(operation);
+        
+        if (e.target.innerText === "=") {
             console.log(number2);
             let result = operate(number1, number2, operation);
             console.log(result);
-
+            
+            
         }
+        });
     });
-});
