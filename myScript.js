@@ -80,7 +80,7 @@ numButtons.forEach(numButton => {
         } else {
             number2 += (numButton.value);
             console.log(number2);
-            displayResult.textContent += number2;
+            displayResult.textContent += numButton.value;
 
         }
     });
