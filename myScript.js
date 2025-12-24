@@ -78,7 +78,7 @@ numButtons.forEach(numButton => {
             displayResult.textContent = number1;
 
         } else {
-            number2 += Number(numButton.value);
+            number2 += (numButton.value);
             console.log(number2);
             displayResult.textContent += number2;
 
