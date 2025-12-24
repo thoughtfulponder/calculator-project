@@ -27,6 +27,22 @@ function divide(num1, num2) {
     return +(num1) / +(num2);
 }
 
+function singleValuePercentage(num1) {
+    return num1 / 100;
+}
+
+function multiValuePercentage(num1, num2, operator) {
+    if (operator === multiply) {
+        return (num1 * num2) / 100;
+    } else if (operator === divide) {
+        return (num1 / num2) / 100;
+    } else if (operator === subtract) {
+        return (num1 - num2) / 100;
+    } else if (operator === add) {
+        return (num1 + num2) / 100;
+    }
+}
+
 function operate(num1, num2, operator) {
     return operator(num1, num2);
 }
@@ -90,7 +106,7 @@ oprButtons.forEach(oprButton => {
     oprButton.addEventListener("click", e => {
         if (e.target.innerText === "X" && number2 === "") {
             operation = multiply;
-            
+
         } else if (e.target.innerText === "/" && number2 === "") {
             operation = divide;
         } else if (e.target.innerText === "-" && number2 === "") {
@@ -114,9 +130,9 @@ oprButtons.forEach(oprButton => {
             operation2 = add;
             operation2.textContent = "+";
         }
-        
-        if (e.target.innerText === "=" || 
-            operation2.textContent === "X" || 
+
+        if (e.target.innerText === "=" ||
+            operation2.textContent === "X" ||
             operation2.textContent === "/" ||
             operation2.textContent === "-" ||
             operation2.textContent === "+") {
@@ -126,23 +142,42 @@ oprButtons.forEach(oprButton => {
             displayResult.textContent = result;
             number1 = result;
             if (number2 !== "" && oprButton.innerText !== "=" || number2 === "") {
-                displayResult.textContent += operation2.textContent;
+                //displayResult.textContent += operation2.textContent;
+                displayResult.textContent += e.target.textContent;
             }
-            
+
             if (number2 !== "" || oprButton.innerText === "=") {
                 operation2.textContent = "";
             }
 
             number2 = "";
             operation = operation2;
-            
-            
+
+
         }
+
+        if (e.target.textContent === "%" && operation === "") {
+            result = singleValuePercentage(number1);
+            displayResult.textContent = result;
+        } else if (e.target.textContent === "%" && operation !== "") {
+            result = multiValuePercentage(number1, number2, operation);
+            displayResult.textContent = result;
+        }
+
+        if (e.target.textContent === "=" && number1 !== "") {
+            operation = "";
+            number1 = "";
+        }
+
+        if (e.target.textContent === "%") {
+
+        }
+
         if (e.target.textContent === "AC") {
             number1 = "";
             operation = "";
             operation2 = "";
             displayResult.textContent = 0;
         }
-        });
     });
+});
