@@ -43,6 +43,10 @@ function multiValuePercentage(num1, num2, operator) {
     }
 }
 
+function correct(num) {
+    return num.slice(0, -1);
+}
+
 function operate(num1, num2, operator) {
     return operator(num1, num2);
 }
@@ -169,9 +173,22 @@ oprButtons.forEach(oprButton => {
             number1 = "";
         }
 
-        if (e.target.textContent === "%") {
+        if (e.target.textContent === "Correct" && operation === "") {
+            number1 = correct(number1);
+            console.log(number1);
+            if (number1 === "") {
+                displayResult.textContent = 0;
+            } else {
+                displayResult.textContent = number1
+            }
+        } else if (e.target.textContent === "Correct" && operation !== "") {
+            let correctValue2 = correct(number2);
+            console.log(correctValue2);
+            number2 = correctValue2;
+            displayResult.textContent += number2;
 
         }
+
 
         if (e.target.textContent === "AC") {
             number1 = "";
