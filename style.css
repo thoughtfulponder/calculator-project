@@ -37,6 +37,17 @@ body {
     margin: .3rem;
     color: white;
     font-size: 2rem;
+    box-sizing: border-box;
+}
+
+#display-result {
+    background-color: green;
+    color: white;
+    border: none;
+    font-size: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: end;
 }
 
 #calc-buttons {

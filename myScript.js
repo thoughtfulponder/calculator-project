@@ -1,4 +1,4 @@
-const displayResult = document.querySelector(".display-result");
+const displayResult = document.querySelector("#display-result");
 
 const buttons = document.querySelectorAll(".btn");
 
@@ -74,10 +74,10 @@ function operate(num1, num2, operator) {
         }
 
         if (button.textContent === "AC" || button.textContent === "clear") {
-            displayResult.textContent = "0";
+            displayResult.value = "0";
             operation = "";
         } /*else {
-            displayResult.textContent = `${number1} ${operation} ${number2}`;
+            displayResult.value = `${number1} ${operation} ${number2}`;
         }*/
 /*if (button.value === "equal") {
     console.log(button.textContent);
@@ -95,12 +95,12 @@ numButtons.forEach(numButton => {
         if (operation === "") {
             number1 += (numButton.value);
             console.log(number1);
-            displayResult.textContent = number1;
+            displayResult.value = number1;
 
         } else {
             number2 += (numButton.value);
             console.log(number2);
-            displayResult.textContent += numButton.value;
+            displayResult.value += numButton.value;
 
         }
     });
@@ -119,7 +119,7 @@ oprButtons.forEach(oprButton => {
             operation = add;
         }
         console.log(operation);
-        displayResult.textContent += e.target.textContent;
+        displayResult.value += e.target.textContent;
 
         if (number2 !== "" && e.target.innerText === "X") {
             operation2 = multiply;
@@ -143,11 +143,11 @@ oprButtons.forEach(oprButton => {
             console.log(number2);
             let result = operate(number1, number2, operation);
             console.log(result);
-            displayResult.textContent = result;
+            displayResult.value = result;
             number1 = result;
             if (number2 !== "" && oprButton.innerText !== "=" || number2 === "") {
-                //displayResult.textContent += operation2.textContent;
-                displayResult.textContent += e.target.textContent;
+                //displayResult.value += operation2.textContent;
+                displayResult.value += e.target.textContent;
             }
 
             if (number2 !== "" || oprButton.innerText === "=") {
@@ -162,30 +162,30 @@ oprButtons.forEach(oprButton => {
 
         if (e.target.textContent === "%" && operation === "") {
             result = singleValuePercentage(number1);
-            displayResult.textContent = result;
+            displayResult.value = result;
         } else if (e.target.textContent === "%" && operation !== "") {
             result = multiValuePercentage(number1, number2, operation);
-            displayResult.textContent = result;
+            displayResult.value = result;
         }
 
         if (e.target.textContent === "=" && number1 !== "") {
             operation = "";
-            number1 = "";
+            //number1 = "";
         }
 
         if (e.target.textContent === "Correct" && operation === "") {
             number1 = correct(number1);
             console.log(number1);
             if (number1 === "") {
-                displayResult.textContent = 0;
+                displayResult.value = 0;
             } else {
-                displayResult.textContent = number1
+                displayResult.value = number1
             }
         } else if (e.target.textContent === "Correct" && operation !== "") {
             let correctValue2 = correct(number2);
             console.log(correctValue2);
             number2 = correctValue2;
-            displayResult.textContent += number2;
+            displayResult.value += number2;
 
         }
 
@@ -194,7 +194,7 @@ oprButtons.forEach(oprButton => {
             number1 = "";
             operation = "";
             operation2 = "";
-            displayResult.textContent = 0;
+            displayResult.value = 0;
         }
     });
 });
