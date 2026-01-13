@@ -10,6 +10,7 @@ let number1 = "";
 let operation = "";
 let number2 = "";
 let operation2 = "";
+let result = "";
 
 function add(num1, num2) {
     return +(num1) + +(num2);
@@ -141,7 +142,7 @@ oprButtons.forEach(oprButton => {
             operation2.textContent === "-" ||
             operation2.textContent === "+") {
             console.log(number2);
-            let result = operate(number1, number2, operation);
+            result = operate(number1, number2, operation);
             console.log(result);
             displayResult.value = result;
             number1 = result;
@@ -170,7 +171,10 @@ oprButtons.forEach(oprButton => {
 
         if (e.target.textContent === "=" && number1 !== "") {
             operation = "";
-            //number1 = "";
+        }
+
+        if (number1 !== result) {
+            number1 = number1;
         }
 
         if (e.target.textContent === "Correct" && operation === "") {
