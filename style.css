@@ -50,6 +50,10 @@ body {
     text-align: end;
 }
 
+input::placeholder {
+    color: white;
+}
+
 #calc-buttons {
     display: flex;
     flex-wrap: wrap;
