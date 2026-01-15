@@ -48,6 +48,10 @@ function correct(num) {
     return num.slice(0, -1);
 }
 
+function valueCorrect(str) {
+    return str.slice(0, str.length - 1);
+}
+
 function operate(num1, num2, operator) {
     return operator(num1, num2);
 }
@@ -185,11 +189,13 @@ oprButtons.forEach(oprButton => {
             } else {
                 displayResult.value = number1
             }
+            displayResult.value = valueCorrect(displayResult.value);
         } else if (e.target.textContent === "Correct" && operation !== "") {
             let correctValue2 = correct(number2);
             console.log(correctValue2);
             number2 = correctValue2;
             displayResult.value += number2;
+            displayResult.value = valueCorrect(displayResult.value);
 
         }
 
