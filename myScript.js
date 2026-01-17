@@ -11,6 +11,8 @@ let operation = "";
 let number2 = "";
 let operation2 = "";
 let result = "";
+let stringValue = "";
+let arrValue = [];
 
 function add(num1, num2) {
     return +(num1) + +(num2);
@@ -49,7 +51,7 @@ function correct(num) {
 }
 
 function valueCorrect(str) {
-    return str.slice(0, str.length - 1);
+    return str.slice(0, -1);
 }
 
 function operate(num1, num2, operator) {
@@ -100,13 +102,14 @@ numButtons.forEach(numButton => {
         if (operation === "") {
             number1 += (numButton.value);
             console.log(number1);
+            arrValue.push(number1);
             displayResult.value = number1;
 
         } else {
             number2 += (numButton.value);
             console.log(number2);
+            arrValue.push(number2);
             displayResult.value += numButton.value;
-
         }
     });
 });
@@ -115,16 +118,19 @@ oprButtons.forEach(oprButton => {
     oprButton.addEventListener("click", e => {
         if (e.target.innerText === "X" && number2 === "") {
             operation = multiply;
-
+            operation.innerText = "x";
         } else if (e.target.innerText === "/" && number2 === "") {
             operation = divide;
+            operation.innerText = "/";
         } else if (e.target.innerText === "-" && number2 === "") {
             operation = subtract;
+            operation.innerText = "-";
         } else if (e.target.innerText === "+" && number2 === "") {
             operation = add;
+            operation.innerText = "+";
         }
         console.log(operation);
-        displayResult.value += e.target.textContent;
+        displayResult.value += operation.innerText;
 
         if (number2 !== "" && e.target.innerText === "X") {
             operation2 = multiply;
@@ -181,22 +187,29 @@ oprButtons.forEach(oprButton => {
             number1 = number1;
         }
 
-        if (e.target.textContent === "Correct" && operation === "") {
+        if (e.target.innerText === "Correct" && operation === "") {
             number1 = correct(number1);
             console.log(number1);
             if (number1 === "") {
                 displayResult.value = 0;
             } else {
-                displayResult.value = number1
+                displayResult.value = number1;
             }
-            displayResult.value = valueCorrect(displayResult.value);
-        } else if (e.target.textContent === "Correct" && operation !== "") {
-            let correctValue2 = correct(number2);
-            console.log(correctValue2);
-            number2 = correctValue2;
-            displayResult.value += number2;
-            displayResult.value = valueCorrect(displayResult.value);
-
+            //displayResult.value = valueCorrect(displayResult.value);
+        } else if (e.target.innerText === "Correct" && operation !== "" && number2 !== "") {
+            //let correctValue2 = correct(number2);
+            /*console.log(correctValue2);
+            number2 = correctValue2;*/
+            number2 = correct(number2);
+            /*displayResult.value += number2;
+            let visual = displayResult.value;
+            let correctVisual = valueCorrect(visual);
+            displayResult.value = correctVisual;*/
+            stringValue = displayResult.value;
+            displayResult.value = valueCorrect(stringValue);
+            console.log(number2);
+            console.log(stringValue);
+            
         }
 
 
