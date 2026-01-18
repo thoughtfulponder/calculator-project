@@ -11,6 +11,7 @@ let operation = "";
 let number2 = "";
 let operation2 = "";
 let result = "";
+let currentOperation;
 let stringValue = "";
 let arrValue = [];
 
@@ -132,6 +133,7 @@ oprButtons.forEach(oprButton => {
         console.log(operation);
         displayResult.value += operation.innerText;
 
+
         if (number2 !== "" && e.target.innerText === "X") {
             operation2 = multiply;
             operation2.textContent = "X";
@@ -147,7 +149,7 @@ oprButtons.forEach(oprButton => {
         }
 
         if (e.target.innerText === "=" ||
-            operation2.textContent === "X" ||
+            operation2.textContent === "x" ||
             operation2.textContent === "/" ||
             operation2.textContent === "-" ||
             operation2.textContent === "+") {
@@ -168,6 +170,14 @@ oprButtons.forEach(oprButton => {
             number2 = "";
             operation = operation2;
 
+
+        }
+
+        if (operation !== "" && number2 === "") {
+            //console.log(displayResult.value = displayResult.value.slice(0, -1));
+            //console.log(displayResult.value += operation.innerText);
+            currentOperation = operation.innerText;
+            console.log(operation.innerText);
 
         }
 
@@ -205,11 +215,11 @@ oprButtons.forEach(oprButton => {
             let visual = displayResult.value;
             let correctVisual = valueCorrect(visual);
             displayResult.value = correctVisual;*/
-            stringValue = displayResult.value;
-            displayResult.value = valueCorrect(stringValue);
+            //stringValue = displayResult.value;
+            displayResult.value = displayResult.value.slice(0, -1);
             console.log(number2);
             console.log(stringValue);
-            
+
         }
 
 
