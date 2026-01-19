@@ -180,8 +180,10 @@ oprButtons.forEach(oprButton => {
 
         }
 
-        if (result === number1 && operation === operation2) {
-            number1 = "";
+        if (typeof number1 == "string") {
+            number1 = number1;
+        } else {
+            number1 = result;
         }
 
         if (operation !== "" && number2 === "") {
