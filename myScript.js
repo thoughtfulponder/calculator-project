@@ -131,7 +131,14 @@ oprButtons.forEach(oprButton => {
             operation.innerText = "+";
         }
         console.log(operation);
-        displayResult.value += operation.innerText;
+        if (displayResult.value.slice(-1) === currentOperation && operation !== "") {
+            displayResult.value = displayResult.value.slice(0, -1);
+            displayResult.value += operation.innerText;
+        } else {
+            displayResult.value += operation.innerText;
+        }
+        console.log(displayResult.value.slice(-1));
+        
 
 
         if (number2 !== "" && e.target.innerText === "X") {
@@ -177,7 +184,8 @@ oprButtons.forEach(oprButton => {
             //console.log(displayResult.value = displayResult.value.slice(0, -1));
             //console.log(displayResult.value += operation.innerText);
             currentOperation = operation.innerText;
-            console.log(operation.innerText);
+            console.log(currentOperation);
+            
 
         }
 
