@@ -6,6 +6,8 @@ const numButtons = document.querySelectorAll(".num-btn");
 
 const oprButtons = document.querySelectorAll(".opr-btn");
 
+const correctButton = document.querySelector(".correct");
+
 let number1 = "";
 let operation = "";
 let number2 = "";
@@ -137,8 +139,8 @@ oprButtons.forEach(oprButton => {
         } else {
             displayResult.value += operation.innerText;
         }
-        
-        
+
+
 
 
         if (number2 !== "" && e.target.innerText === "X") {
@@ -191,7 +193,7 @@ oprButtons.forEach(oprButton => {
             //console.log(displayResult.value += operation.innerText);
             currentOperation = operation.innerText;
             console.log(currentOperation);
-            
+
 
         }
 
@@ -211,30 +213,32 @@ oprButtons.forEach(oprButton => {
             number1 = number1;
         }
 
-        if (e.target.innerText === "Correct" && operation === "") {
-            number1 = correct(number1);
-            console.log(number1);
-            if (number1 === "") {
-                displayResult.value = 0;
-            } else {
-                displayResult.value = number1;
-            }
-            //displayResult.value = valueCorrect(displayResult.value);
-        } else if (e.target.innerText === "Correct" && operation !== "" && number2 !== "") {
-            //let correctValue2 = correct(number2);
-            /*console.log(correctValue2);
-            number2 = correctValue2;*/
-            number2 = correct(number2);
-            /*displayResult.value += number2;
-            let visual = displayResult.value;
-            let correctVisual = valueCorrect(visual);
-            displayResult.value = correctVisual;*/
-            //stringValue = displayResult.value;
-            displayResult.value = displayResult.value.slice(0, -1);
-            console.log(number2);
-            console.log(stringValue);
+        /*  if (e.target.innerText === "Correct" && operation === "") {
+              number1 = correct(number1);
+              console.log(number1);
+              if (number1 === "") {
+                  displayResult.value = 0;
+              } else {
+                  console.log(displayResult.value = displayResult.value.slice(0, -1));
+                  //displayResult.value = number1;
+              }
+              //displayResult.value = valueCorrect(displayResult.value);
+          } else if (e.target.innerText === "Correct" && operation !== "" && number2 !== "") {
+              //let correctValue2 = correct(number2);
+              /*console.log(correctValue2);
+              number2 = correctValue2;*/
+        /*  number2 = correct(number2);
+          displayResult.value = displayResult.value.slice(0, -1);
+          /*displayResult.value += number2;
+          let visual = displayResult.value;
+          let correctVisual = valueCorrect(visual);
+          displayResult.value = correctVisual;*/
+        //stringValue = displayResult.value;
 
-        }
+        /* console.log(number2);
+         console.log(stringValue);
+
+     } */
 
 
         if (e.target.textContent === "AC") {
@@ -244,4 +248,34 @@ oprButtons.forEach(oprButton => {
             displayResult.value = 0;
         }
     });
+});
+
+correctButton.addEventListener("click", (e) => {
+    if (e.target.innerText === "Correct" && operation === "") {
+        number1 = correct(number1);
+        console.log(number1);
+        if (number1 === "") {
+            displayResult.value = 0;
+        } else {
+            //console.log(displayResult.value = displayResult.value.slice(0, -1));
+            //displayResult.value = number1;
+        }
+        //displayResult.value = valueCorrect(displayResult.value);
+    } else if (number2 === "") {
+        operation = "";
+    } else if (e.target.innerText === "Correct" && operation !== "" && number2 !== "") {
+        //let correctValue2 = correct(number2);
+        /*console.log(correctValue2);
+        number2 = correctValue2;*/
+        number2 = correct(number2);
+        /*displayResult.value += number2;
+        let visual = displayResult.value;
+        let correctVisual = valueCorrect(visual);
+        displayResult.value = correctVisual;*/
+        //stringValue = displayResult.value;
+        console.log(number2);
+    }
+    console.log("num1: " + number1);
+    console.log("num2: " + number2);
+    console.log(displayResult.value = displayResult.value.slice(0, -1));
 });
