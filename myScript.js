@@ -137,7 +137,7 @@ oprButtons.forEach(oprButton => {
         } else {
             displayResult.value += operation.innerText;
         }
-        console.log(displayResult.value.slice(-1));
+        
         
 
 
@@ -178,6 +178,10 @@ oprButtons.forEach(oprButton => {
             operation = operation2;
 
 
+        }
+
+        if (result === number1 && operation === operation2) {
+            number1 = "";
         }
 
         if (operation !== "" && number2 === "") {
