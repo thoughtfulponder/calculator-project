@@ -103,7 +103,9 @@ console.log(button.value);
 numButtons.forEach(numButton => {
     numButton.addEventListener("click", e => {
         if (operation === "") {
-            number1 = "";
+            if (result === number1) {
+                number1 = "";
+            }
             number1 += (numButton.value);
             console.log(number1);
             arrValue.push(number1);
