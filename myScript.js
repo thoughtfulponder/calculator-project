@@ -103,6 +103,7 @@ console.log(button.value);
 numButtons.forEach(numButton => {
     numButton.addEventListener("click", e => {
         if (operation === "") {
+            number1 = "";
             number1 += (numButton.value);
             console.log(number1);
             arrValue.push(number1);
@@ -182,12 +183,6 @@ oprButtons.forEach(oprButton => {
 
         }
 
-        if (typeof number1 == "string") {
-            number1 = number1;
-        } else {
-            number1 = result;
-        }
-
         if (operation !== "" && number2 === "") {
             //console.log(displayResult.value = displayResult.value.slice(0, -1));
             //console.log(displayResult.value += operation.innerText);
@@ -207,10 +202,6 @@ oprButtons.forEach(oprButton => {
 
         if (e.target.textContent === "=" && number1 !== "") {
             operation = "";
-        }
-
-        if (number1 !== result) {
-            number1 = number1;
         }
 
         /*  if (e.target.innerText === "Correct" && operation === "") {
