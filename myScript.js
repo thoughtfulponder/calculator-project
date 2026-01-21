@@ -8,6 +8,10 @@ const oprButtons = document.querySelectorAll(".opr-btn");
 
 const correctButton = document.querySelector(".correct");
 
+const dotButton = document.querySelector(".dot");
+
+let isEnabled = true;
+
 let number1 = "";
 let operation = "";
 let number2 = "";
@@ -66,8 +70,17 @@ function roundToDecimal(num, decimalPlaces) {
     return Math.round(num * factor) / factor;
 }
 
+function toggleDotButton() {
+    console.log(dotButton.value);
+    if (operation !== "") {
+        dotButton.disabled = false;
+    }
+    else {
+        dotButton.disabled = true;
+    }
+}
 
-/*buttons.forEach(button => {
+/*buttons.forEach(button => { 
     button.addEventListener("click", () => {
         number1 = button.value;
 
@@ -106,13 +119,14 @@ console.log(button.value);
 
 numButtons.forEach(numButton => {
     numButton.addEventListener("click", e => {
+        
         if (operation === "") {
             if (result === number1) {
                 number1 = "";
             }
             number1 += (numButton.value);
             console.log(number1);
-            arrValue.push(number1);
+
             displayResult.value = number1;
 
         } else {
@@ -121,6 +135,7 @@ numButtons.forEach(numButton => {
             arrValue.push(number2);
             displayResult.value += numButton.value;
         }
+        //toggleDotButton();
     });
 });
 
@@ -221,9 +236,9 @@ oprButtons.forEach(oprButton => {
             displayResult.value = result;
         }
 
-        if (e.target.textContent === "=" && number1 !== "") {
+       /* if (e.target.textContent === "=" && number1 !== "") {
             operation = "";
-        }
+        }*/
 
         /*  if (e.target.innerText === "Correct" && operation === "") {
               number1 = correct(number1);
@@ -291,4 +306,13 @@ correctButton.addEventListener("click", (e) => {
     console.log("num1: " + number1);
     console.log("num2: " + number2);
     console.log(displayResult.value = displayResult.value.slice(0, -1));
+});
+
+/*dotButton.addEventListener("click", () => {
+    toggleDotButton();
+});*/
+
+document.addEventListener("keydown", (e) => {
+    console.log(e.key);
+    
 });
