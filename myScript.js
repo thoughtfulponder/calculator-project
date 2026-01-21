@@ -169,6 +169,17 @@ oprButtons.forEach(oprButton => {
             operation2.textContent === "/" ||
             operation2.textContent === "-" ||
             operation2.textContent === "+") {
+                if (number1 === "" || operation === "" || number2 === "" ) {
+                    alert("Please enter numbers and a operator first");
+                    number1 = "";
+                    displayResult.value = 0;
+                } else if (operation === divide && number2 === "0") {
+                    alert("you cant divide a value by 0 you know that right?");
+                    number1 = "";
+                    operation = "";
+                    number2 = "";
+                    displayResult.value = 0;
+                } else {
             console.log(number2);
             result = operate(number1, number2, operation);
             console.log(result);
@@ -189,7 +200,7 @@ oprButtons.forEach(oprButton => {
 
             number2 = "";
             operation = operation2;
-
+        }
 
         }
 
