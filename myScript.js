@@ -12,7 +12,7 @@ let number1 = "";
 let operation = "";
 let number2 = "";
 let operation2 = "";
-let result = "";
+let result = 0;
 let currentOperation;
 let stringValue = "";
 let arrValue = [];
@@ -61,6 +61,10 @@ function operate(num1, num2, operator) {
     return operator(num1, num2);
 }
 
+function roundToDecimal(num, decimalPlaces) {
+    const factor = Math.pow(10, decimalPlaces);
+    return Math.round(num * factor) / factor;
+}
 
 
 /*buttons.forEach(button => {
@@ -168,6 +172,10 @@ oprButtons.forEach(oprButton => {
             console.log(number2);
             result = operate(number1, number2, operation);
             console.log(result);
+            if (result % 1 !== 0) {
+                result = roundToDecimal(result, 4);
+            }
+            
             displayResult.value = result;
             number1 = result;
             if (number2 !== "" && oprButton.innerText !== "=" || number2 === "") {
@@ -236,6 +244,7 @@ oprButtons.forEach(oprButton => {
 
         if (e.target.textContent === "AC") {
             number1 = "";
+            number2 = "";
             operation = "";
             operation2 = "";
             displayResult.value = 0;
