@@ -72,12 +72,17 @@ function roundToDecimal(num, decimalPlaces) {
 
 function toggleDotButton() {
     console.log(dotButton.value);
-    if (operation !== "") {
+    if (/*displayResult.value.slice(-1) === "."*/ !isEnabled) {
         dotButton.disabled = false;
+        console.log("isEnabled:" + isEnabled);
+        
     }
     else {
         dotButton.disabled = true;
+        console.log("isEanbled:" + isEnabled);
+        
     }
+    console.log(isEnabled = !isEnabled);
 }
 
 /*buttons.forEach(button => { 
@@ -161,7 +166,7 @@ oprButtons.forEach(oprButton => {
         } else {
             displayResult.value += operation.innerText;
         }
-
+        toggleDotButton();
 
 
 
@@ -306,11 +311,17 @@ correctButton.addEventListener("click", (e) => {
     console.log("num1: " + number1);
     console.log("num2: " + number2);
     console.log(displayResult.value = displayResult.value.slice(0, -1));
+    console.log("display value:" + displayResult.value.slice(-1));
+    
+    if (displayResult.value.slice(-1) === ".") {
+        toggleDotButton();
+    }
+    
 });
 
-/*dotButton.addEventListener("click", () => {
+dotButton.addEventListener("click", () => {
     toggleDotButton();
-});*/
+});
 
 document.addEventListener("keydown", (e) => {
     console.log(e.key);

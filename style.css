@@ -70,6 +70,8 @@ input::placeholder {
     flex-basis: 25%;
     box-sizing: border-box;
     font-size: 1.1rem;
+    background-color: white;
+    color: black;
 }
 
 .equal {
