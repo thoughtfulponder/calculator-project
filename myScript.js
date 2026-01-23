@@ -20,7 +20,7 @@ let result = 0;
 let currentOperation;
 let stringValue = "";
 let arrValue = [];
-let currentNumValue;
+let currentNumValue = "";
 
 function add(num1, num2) {
     return +(num1) + +(num2);
@@ -73,10 +73,14 @@ function roundToDecimal(num, decimalPlaces) {
 
 function toggleDotButton() {
     console.log(dotButton.value);
+    currentNumValue = "";
     if (operation === "") {
         currentNumValue = number1;
     } else {
         currentNumValue = number2;
+    }
+    if (number2 === "") {
+        currentNumValue = number1;
     }
     currentNumValue = currentNumValue.split("");
     console.log("currentNumValue:" + currentNumValue);
@@ -328,9 +332,7 @@ correctButton.addEventListener("click", (e) => {
     console.log(displayResult.value = displayResult.value.slice(0, -1));
     console.log("display value:" + displayResult.value.slice(-1));
     
-    if (displayResult.value.slice(-1) === ".") {
-        toggleDotButton();
-    }
+    toggleDotButton();
     
 });
 
