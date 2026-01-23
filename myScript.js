@@ -20,6 +20,7 @@ let result = 0;
 let currentOperation;
 let stringValue = "";
 let arrValue = [];
+let currentNumValue;
 
 function add(num1, num2) {
     return +(num1) + +(num2);
@@ -72,17 +73,31 @@ function roundToDecimal(num, decimalPlaces) {
 
 function toggleDotButton() {
     console.log(dotButton.value);
-    if (/*displayResult.value.slice(-1) === "."*/ !isEnabled) {
+    if (operation === "") {
+        currentNumValue = number1;
+    } else {
+        currentNumValue = number2;
+    }
+    currentNumValue = currentNumValue.split("");
+    console.log("currentNumValue:" + currentNumValue);
+    
+    for (let i = 0; i < currentNumValue.length; i++) {
+        if (currentNumValue[i] === ".") {
+            dotButton.disabled = true;
+            break;
+        } else {
+            dotButton.disabled = false;
+        }
+    }
+    /*if (displayResult.value.slice(-1) === "." !isEnabled) {
         dotButton.disabled = false;
         console.log("isEnabled:" + isEnabled);
-        
     }
     else {
         dotButton.disabled = true;
         console.log("isEanbled:" + isEnabled);
-        
     }
-    console.log(isEnabled = !isEnabled);
+    console.log(isEnabled = !isEnabled);*/
 }
 
 /*buttons.forEach(button => { 
@@ -140,7 +155,7 @@ numButtons.forEach(numButton => {
             arrValue.push(number2);
             displayResult.value += numButton.value;
         }
-        //toggleDotButton();
+        toggleDotButton();
     });
 });
 
@@ -166,7 +181,7 @@ oprButtons.forEach(oprButton => {
         } else {
             displayResult.value += operation.innerText;
         }
-        toggleDotButton();
+        //toggleDotButton();
 
 
 
