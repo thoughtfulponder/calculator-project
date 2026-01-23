@@ -79,12 +79,13 @@ function toggleDotButton() {
     } else {
         currentNumValue = number2;
     }
-    if (number2 === "") {
-        currentNumValue = number1;
-    }
+    
     currentNumValue = currentNumValue.split("");
     console.log("currentNumValue:" + currentNumValue);
     
+    if (currentNumValue.length === 0) {
+        dotButton.disabled = false;
+    } else {
     for (let i = 0; i < currentNumValue.length; i++) {
         if (currentNumValue[i] === ".") {
             dotButton.disabled = true;
@@ -93,6 +94,7 @@ function toggleDotButton() {
             dotButton.disabled = false;
         }
     }
+}
     /*if (displayResult.value.slice(-1) === "." !isEnabled) {
         dotButton.disabled = false;
         console.log("isEnabled:" + isEnabled);
@@ -185,7 +187,10 @@ oprButtons.forEach(oprButton => {
         } else {
             displayResult.value += operation.innerText;
         }
-        //toggleDotButton();
+        if (e.target.innerText !== "AC") {
+            toggleDotButton();
+        }
+        
 
 
 
@@ -336,9 +341,9 @@ correctButton.addEventListener("click", (e) => {
     
 });
 
-dotButton.addEventListener("click", () => {
+/*dotButton.addEventListener("click", () => {
     toggleDotButton();
-});
+});*/
 
 document.addEventListener("keydown", (e) => {
     console.log(e.key);
