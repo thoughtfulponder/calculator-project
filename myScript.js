@@ -260,6 +260,8 @@ oprButtons.forEach(oprButton => {
         if (e.target.textContent === "%" && operation === "") {
             result = singleValuePercentage(number1);
             displayResult.value = result;
+        } else if (e.target.innerText === "%" && operation !== "" && number2 === "") {
+            return;
         } else if (e.target.textContent === "%" && operation !== "") {
             result = multiValuePercentage(number1, number2, operation);
             displayResult.value = result;
@@ -313,10 +315,10 @@ correctButton.addEventListener("click", (e) => {
         console.log(number1);
         if (number1 === "") {
             displayResult.value = 0;
-        } else {
+        } /* else {
             //console.log(displayResult.value = displayResult.value.slice(0, -1));
             //displayResult.value = number1;
-        }
+        }*/
         //displayResult.value = valueCorrect(displayResult.value);
     } else if (number2 === "") {
         operation = "";
