@@ -79,8 +79,15 @@ input::placeholder {
 }
 
 @media (max-width: 430px) {
+    body {
+        align-items: start;
+        min-height: 100vh;
+    }
+
     #calculator-container {
         max-width: fit-content;
+        /*aspect-ratio: 1 / 1.5;*/
+        /*height: auto;*/
         border-radius: 0;
     }
 
